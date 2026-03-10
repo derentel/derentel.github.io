@@ -1,0 +1,106 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #050508;
+    color: #e0e0e0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 350px 1fr 350px; 
+    grid-template-rows: auto 1fr auto;
+    width: 95%;
+    max-width: 1600px;
+    height: 90vh;
+    gap: 40px;
+}
+
+/* --- ШАПКА И ПОДВАЛ --- */
+.site-header { grid-column: 1/-1; display: flex; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid #1a1a1a; }
+.site-footer { grid-column: 1/-1; display: flex; justify-content: center; padding-top: 20px; border-top: 1px solid #1a1a1a; }
+.nav-link { color: #888; text-decoration: none; transition: 0.3s; font-size: 0.9rem; letter-spacing: 1px; }
+.nav-link:hover { color: #fff; text-shadow: 0 0 10px #fff; }
+
+/* --- ЦЕНТР: НИКНЕЙМ --- */
+.username-section { grid-column: 2; grid-row: 2; text-align: center; align-self: start; margin-top: 10vh; }
+.username { font-size: 10rem; color: #fff; font-weight: 700; letter-spacing: -7px; line-height: 1; }
+.username-link { text-decoration: none; display: inline-block; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
+.username-link:hover { transform: scale(1.05); }
+.username-link::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 6px; background: #fff; box-shadow: 0 5px 15px rgba(255,255,255,0.3); }
+
+/* --- СТЭК (ЛЕВО) --- */
+.languages-section { grid-column: 1; grid-row: 2; align-self: center; }
+.section-title { color: #444; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 3px; }
+.languages-grid { display: flex; flex-direction: column; gap: 15px; } 
+
+.lang-item {
+    position: relative; height: 100px; background: #0c0c12; border-radius: 12px;
+    border: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: center;
+    overflow: hidden; transition: 0.4s;
+}
+
+.python-box:hover { border-color: #ffd43b; box-shadow: 0 0 25px rgba(255, 212, 59, 0.4); color: #ffd43b; }
+.cpp-box:hover { border-color: #00599c; box-shadow: 0 0 25px rgba(0, 89, 156, 0.4); color: #00599c; }
+.java-box:hover { border-color: #e76f00; box-shadow: 0 0 25px rgba(231, 111, 0, 0.4); color: #e76f00; }
+.rust-box:hover { border-color: #ffffff; box-shadow: 0 0 25px rgba(255, 255, 255, 0.4); color: #ffffff; }
+
+.lang-default, .lang-hover { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 15px; transition: 0.4s; }
+.lang-hover { transform: translateY(100%); opacity: 0; background: #000; }
+.lang-item:hover .lang-default { transform: translateY(-100%); opacity: 0; }
+.lang-item:hover .lang-hover { transform: translateY(0); opacity: 1; }
+.lang-logo { height: 40px; }
+.logo-white { filter: brightness(0) invert(1); }
+.exp-digits { font-family: 'Roboto Mono'; font-size: 2.5rem; font-weight: 700; }
+.exp-text { font-size: 0.7rem; text-transform: uppercase; opacity: 0.6; }
+
+/* --- ПРОЕКТЫ (ПРАВО) --- */
+.projects-section { grid-column: 3; grid-row: 2; align-self: center; }
+.project-list { display: flex; flex-direction: column; gap: 15px; }
+.project-item { background: #0c0c12; padding: 25px; border-radius: 12px; border: 1px solid #1a1a1a; text-decoration: none; transition: 0.3s; }
+.project-item:hover { border-color: #fff; transform: translateX(-10px); background: #111; }
+.project-item h3 { color: #fff; margin-bottom: 5px; font-size: 1rem; }
+.project-item p { color: #666; font-size: 0.85rem; }
+
+/* --- МОДАЛЬНЫЕ ОКНА --- */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+.modal.active { opacity: 1; }
+.modal-content { background: #0c0c12; padding: 50px; border-radius: 24px; border: 1px solid #222; width: 90%; max-width: 600px; transform: scale(0.8); transition: 0.4s; position: relative; }
+.modal.active .modal-content { transform: scale(1); }
+.close-modal { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 2.5rem; color: #444; transition: 0.3s; }
+.close-modal:hover { color: #fff; }
+
+/* УКРАШЕНИЕ "ОБО МНЕ" */
+.large-modal { max-width: 700px; }
+.about-text-detailed h2 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; letter-spacing: -1px; }
+.lead { font-size: 1.2rem; color: #aaa; margin-bottom: 30px; }
+.highlight { color: #fff; font-weight: 700; border-bottom: 2px solid #fff; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.about-col h3 { color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; border-left: 3px solid #fff; padding-left: 10px; }
+.about-col p { color: #888; line-height: 1.6; font-size: 0.95rem; }
+.tech-quote { background: #111; padding: 20px; border-radius: 10px; text-align: center; border: 1px solid #222; }
+.tech-quote p { font-style: italic; color: #fff; font-size: 1.1rem; }
+
+.contacts-links { display: flex; justify-content: space-around; margin-top: 30px; width: 100%; }
+.contact-icon-large { text-decoration: none; color: #fff; display: flex; flex-direction: column; align-items: center; gap: 15px; transition: 0.3s; }
+.contact-icon-large:hover { transform: translateY(-10px); }
+
+/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+@media (max-width: 1100px) {
+    body { overflow-y: auto; height: auto; }
+    .main-container { display: flex; flex-direction: column; padding: 40px 20px; height: auto; gap: 60px; }
+    .username-section { margin-top: 0; }
+    .username { font-size: 4rem; letter-spacing: -2px; }
+    .languages-grid { width: 100%; }
+    .lang-item { height: 80px; width: 100%; border-radius: 8px; }
+    .lang-default { flex-direction: row; justify-content: flex-start; padding-left: 30px; }
+    .projects-section, .languages-section { width: 100%; }
+    .site-header { flex-direction: row; justify-content: space-between; width: 100%; }
+    .about-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
