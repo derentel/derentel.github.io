@@ -102,5 +102,29 @@ body {
     .projects-section, .languages-section { width: 100%; }
     .site-header { flex-direction: row; justify-content: space-between; width: 100%; }
     .about-grid { grid-template-columns: 1fr; gap: 20px; }
+/* Стили для светлой темы */
+body.light-theme {
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+}
+body.light-theme .username, 
+body.light-theme .project-item h3, 
+body.light-theme .nav-link:hover,
+body.light-theme .about-text-detailed h2 { color: #000; }
+
+body.light-theme .lang-item, 
+body.light-theme .project-item, 
+body.light-theme .modal-content {
+    background: #ffffff;
+    border-color: #d1d1d1;
 }
 
+body.light-theme .username-link::after { background: #000; }
+body.light-theme .nav-link { color: #555; }
+body.light-theme .section-title { color: #aaa; }
+body.light-theme .project-item p { color: #444; }
+body.light-theme .icon-filter, body.light-theme .contact-icon-large img { filter: invert(0) !important; }
+body.light-theme .contact-icon-large svg { fill: #000 !important; }
+body.light-theme .contact-icon-large { color: #000; }
+
+}
